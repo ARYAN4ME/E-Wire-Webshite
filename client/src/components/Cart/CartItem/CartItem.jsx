@@ -1,18 +1,23 @@
 import { MdClose } from "react-icons/md";
-import prod from "../../../assets/products/earbuds-prod-1.webp";
 import "./CartItem.scss";
 import { useContext } from "react";
 import { Context } from "../../../utils/context";
-const CartItem = () => {
+import {useNavigate} from "react-router-dom"
+const CartItem = ({setShowCart}) => {
+    const navigator = useNavigate();
+    const closeBtn = (item) =>{
+        navigator("/product/" + item.id);
+        setShowCart(false);
+    };
     const {cartItem, handleRemoveFromCart, handleCartProductQuantity} = useContext(Context);
     return <div className="cart-products">
         {cartItem.map(item => (
             <div key={item.id} className="cart-product">
             <div className="img-container">
-                <img src={process.env.REACT_APP_DEV_URL + item.attributes.img.data[0].attributes.url} alt="" />
+                <img onClick={()=>closeBtn(item)} src={process.env.REACT_APP_DEV_URL + item.attributes.img.data[0].attributes.url} alt="" />
             </div>
             <div className="prod-details">
-                <dpan className="name">{item.attributes.title}</dpan>
+                <span onClick={()=>closeBtn(item)} className="name">{item.attributes.title}</span>
                 <MdClose className="close-btn" onClick={()=>handleRemoveFromCart(item)}/>
                 <div className="quantity-button ">
                     <span onClick={()=> handleCartProductQuantity('dec',item)}>-</span>

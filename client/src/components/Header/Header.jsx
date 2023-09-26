@@ -26,7 +26,7 @@ const Header = () => {
     useEffect(()=>{
         window.addEventListener("scroll",handleScroll);
     }, []);
-
+    
     return (
         <>
             <header className={`main-header ${scrolled ? 'sticky-header' : ''}`}>
@@ -44,7 +44,9 @@ const Header = () => {
                     </div>
                     <div className="right">
                         <TbSearch onClick={()=> setShowSearch(true)}/>
-                        <AiOutlineHeart/>
+                       < AiOutlineHeart/>
+                        
+                        
                         <span className="cart-icon" onClick={()=> setShowCart(true)}>
                             <CgShoppingCart/>
                             {!!cartCount &&<span>{cartCount}</span>}

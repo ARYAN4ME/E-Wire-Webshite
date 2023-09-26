@@ -4,14 +4,12 @@ import RelatedProducts from "./RelatedProducts/RelatedProducts";
 import {
     FaFacebookF,
     FaTwitter,
-    FAInstagram,
     FaLinkedinIn,
     FaPinterest,
     FaCartPlus,
     FaInstagram,
 } from "react-icons/fa";
 import "./SingleProduct.scss";
-import prod from "../../assets/products/earbuds-prod-1.webp";
 import useFetch from "../../hooks/useFetch";
 import { useParams } from "react-router-dom";
 import { Context } from "../../utils/context";
@@ -26,7 +24,7 @@ const SingleProduct = () => {
         setQuantity((prevState) =>prevState + 1);
     }
     const decrement = () =>{
-        if(quantity == 1)return;
+        if(quantity === 1)return;
         setQuantity((prevState)=>{
             if(prevState === 1)return 1;
             return prevState -1;
@@ -34,7 +32,6 @@ const SingleProduct = () => {
     }
     if(!data) return;
     const product = data.data[0].attributes
-    console.log("this is for dbugging",product);
     return <div className="single-product-main-content">
         <div className="layout">
             <div className="single-product-page">

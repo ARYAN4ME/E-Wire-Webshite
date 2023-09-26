@@ -6,7 +6,9 @@ import { useContext } from "react";
 import { Context } from "../../utils/context";
 import { loadStripe } from "@stripe/stripe-js"
 import { makePaymentRequest } from "../../utils/api";
+import { useNavigate } from "react-router-dom";
 const Cart = ({ setShowCart }) => {
+    const navigator = useNavigate();
     const { cartItem, cartSubTotal } = useContext(Context);
     const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY);
     const handlePayment = async () => {
@@ -22,6 +24,11 @@ const Cart = ({ setShowCart }) => {
             console.log(error);
         }
     };
+    const returnToShop = () =>{
+        navigator("/");
+        setShowCart(false);
+    }
+    
 
     return <div className="cart-panel">
         <div className="opac-layer"></div>
@@ -37,13 +44,13 @@ const Cart = ({ setShowCart }) => {
                 <div className="empty-cart">
                     <BsCartX />
                     <span>No Product in the cart.</span>
-                    <button className="return-cta">Return to shop</button>
+                    <button onClick={returnToShop} className="return-cta">Return to shop</button>
                 </div>
             )}
 
             {!!cartItem?.length && (
                 <>
-                    <CartItem />
+                    <CartItem setShowCart={setShowCart}/>
                     <div className="cart-footer">
                         <div className="subtotal">
                             <span className="text">Subtotal:</span>

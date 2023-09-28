@@ -10,7 +10,7 @@ Icon
 .Trashes
 ._*
 
-.env
+
 ############################
 # Linux
 ############################
@@ -92,7 +92,7 @@ lcov.info
 pids
 logs
 results
-node_modules
+
 .node_history
 
 ############################
@@ -105,7 +105,7 @@ coverage
 # Strapi
 ############################
 
-.env
+# .env
 license.txt
 exports
 *.cache

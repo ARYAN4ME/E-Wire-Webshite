@@ -33,8 +33,8 @@ const Header = () => {
                 <div className="header-content">
                     <ul className="left">
                         <li onClick={()=>navigate("/")}>Home</li>
-                        <li>About</li>
-                        <li>Categories</li>
+                        <li><a href="#scroll">About</a></li>
+                        <li> <a href="#catetory">Categories</a></li>
                     </ul>
                     <div  onClick={()=>navigate("/")} className="center">
                         <div className="logo-img">

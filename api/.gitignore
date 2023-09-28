@@ -30,7 +30,7 @@ $RECYCLE.BIN/
 *.msi
 *.msm
 *.msp
-
+node_modules
 
 ############################
 # Packages
@@ -105,7 +105,7 @@ coverage
 # Strapi
 ############################
 
-# .env
+.env
 license.txt
 exports
 *.cache
